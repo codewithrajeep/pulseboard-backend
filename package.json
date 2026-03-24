@@ -1,0 +1,31 @@
+{
+  "name": "pulseboard-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc -p tsconfig.json && cp -r src/generated dist/generated",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name",
+    "prisma:seed": "prisma db seed",
+    "prisma:reset": "prisma migrate reset --force",
+    "prisma:studio": "prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.2",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
