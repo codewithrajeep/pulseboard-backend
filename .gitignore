@@ -6,3 +6,6 @@ dist/
 
 # env files
 .env
+
+# prisma generated files
+/src/generated/prisma
