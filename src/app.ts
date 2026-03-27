@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import { errorHandler } from "./middlewares/errorHandler";
 
 const app: Express = express();
 
@@ -9,5 +10,6 @@ app.get("/api/v1/health", (_req, res) => {
     status: "ok",
   });
 });
+app.use(errorHandler);
 
 export default app;
