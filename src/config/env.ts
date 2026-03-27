@@ -5,6 +5,7 @@ const envSchema = z.object({
   PORT: z.string().min(1),
   DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "production"]),
+  REDIS_URL: z.string().min(1),
 });
 
 const _env = envSchema.safeParse(process.env);
