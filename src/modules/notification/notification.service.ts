@@ -1,14 +1,11 @@
 import prisma from "../../lib/prisma";
 import { cache } from "../../cache";
 import { Notification } from "../../generated/prisma";
-
-const getCacheKey = (userId: string, workspaceId: string) => {
-  return `notification:${userId}:${workspaceId}`;
-};
+import { CacheKeys } from "../../cache/keys";
 
 export const notificationService = {
   async getNotifications(userId: string, workspaceId: string) {
-    const cacheKey = getCacheKey(userId, workspaceId);
+    const cacheKey = CacheKeys.notifications(workspaceId, userId);
     const cached = await cache.get<Notification[]>(cacheKey);
     if (cached) return cached;
 
@@ -37,7 +34,7 @@ export const notificationService = {
       },
     });
     // Invalidate cache so next read fetches fresh data
-    const cacheKey = getCacheKey(userId, workspaceId);
+    const cacheKey = CacheKeys.notifications(workspaceId, userId);
     await cache.delete(cacheKey);
     return notification;
   },
