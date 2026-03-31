@@ -9,7 +9,7 @@ const connection = {
 new Worker(
   "email",
   async (job) => {
-    const { to, subject, body } = job.data;
+    const { to, subject } = job.data;
     logger.info({ to, subject }, "Email job started!");
     await new Promise((res) => setTimeout(res, 2000));
     logger.info({ to, subject }, "Email job completed!");
