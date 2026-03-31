@@ -6,7 +6,7 @@ const connection = {
   url: env.REDIS_URL,
 };
 
-new Worker(
+const worker = new Worker(
   "export",
   async (job) => {
     const { workspaceId, userId } = job.data;
@@ -16,3 +16,10 @@ new Worker(
   },
   { connection },
 );
+
+worker.on("failed", (job, err) => {
+  logger.error(
+    { jobId: job?.id ?? "unknown", err },
+    "Export job failed after all retries",
+  );
+});
