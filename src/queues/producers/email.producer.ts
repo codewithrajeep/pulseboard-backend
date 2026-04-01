@@ -9,6 +9,10 @@ export const addEmailJob = async (
     to,
     subject,
     body,
+  }, {
+    attempts: 3,
+    backoff: {type: "exponential", delay: 1000},
+    priority: 1,
   });
   return job;
 };
