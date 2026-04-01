@@ -14,7 +14,7 @@ const worker = new Worker(
     await new Promise((res) => setTimeout(res, 5000));
     logger.info({ workspaceId, userId }, "Export job completed!");
   },
-  { connection },
+  { connection, concurrency: 2 },
 );
 
 worker.on("failed", (job, err) => {
