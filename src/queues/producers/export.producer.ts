@@ -13,6 +13,7 @@ export const addExportJob = async (workspaceId: string, userId: string) => {
         type: "exponential",
         delay: 1000,
       },
+      priority: 10,
     },
   );
   return job;
