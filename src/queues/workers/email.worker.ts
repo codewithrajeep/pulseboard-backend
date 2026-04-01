@@ -14,5 +14,7 @@ new Worker(
     await new Promise((res) => setTimeout(res, 2000));
     logger.info({ to, subject }, "Email job completed!");
   },
-  { connection },
+  { connection,
+    concurrency: 5,
+   },
 );
