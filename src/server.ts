@@ -6,6 +6,7 @@ import "./queues/workers/export.worker";
 import "./queues/workers/email.worker";
 import "./events/listeners/user.listener";
 import "./events/listeners/job.listener";
+import "./redis/subscriber"
 
 const PORT = env.PORT;
 
