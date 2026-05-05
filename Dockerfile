@@ -6,7 +6,12 @@ COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
 COPY . .
+
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
+RUN pnpm prisma generate
 RUN pnpm build
 
 EXPOSE 3000
-CMD ["node", "dist/server.js"]
+CMD ["sh", "-c", "pnpm prisma migrate deploy && node dist/server.js"]
