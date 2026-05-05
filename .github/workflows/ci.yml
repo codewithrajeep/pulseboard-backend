@@ -33,6 +33,7 @@ jobs:
           node-version: "20"
       - run: npm install -g pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm prisma generate
       - run: pnpm build
 
   migrate:
