@@ -14,4 +14,4 @@ RUN pnpm prisma generate
 RUN pnpm build
 
 EXPOSE 3000
-CMD ["sh", "-c", "pnpm prisma migrate deploy && node dist/server.js"]
+CMD ["sh", "-c", "sleep 5 && pnpm prisma migrate deploy && node dist/server.js"]
