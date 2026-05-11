@@ -12,6 +12,7 @@ ENV DATABASE_URL=$DATABASE_URL
 
 RUN pnpm prisma generate
 RUN pnpm build
+RUN pnpm prisma generate
 
 EXPOSE 3000
 CMD ["sh", "-c", "sleep 5 && pnpm prisma migrate deploy && node dist/server.js"]
