@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@prisma/client-runtime-utils':
+        specifier: ^7.8.0
+        version: 7.8.0
       bullmq:
         specifier: ^5.71.1
         version: 5.71.1
